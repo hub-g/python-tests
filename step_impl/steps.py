@@ -2,8 +2,6 @@ from step_impl.helpers.Base_Test import Base_Test
 
 from getgauge.python import step
 from getgauge.python import data_store as ds
-import pdb
-
 
 class Pet_Tests(Base_Test):
 
@@ -30,13 +28,11 @@ class Pet_Tests(Base_Test):
         id = ds.spec.pet_id
         r = ds.spec.api.tutorial5(id).put(body={
             'name': name,
-            'age': int(age),
+            'age': age,
             'owner': owner
         })
         assert r.status_code == 200
         r = r.json()
-        type(r['age'])
-        type(age)
         assert r['name'] == name, f"name was {r['name']}, expected: {name}"
         assert r['age'] == int(age), f"age was {r['age']}, expected: {age}"
         assert r['owner'] == owner, f"owner was {r['owner']}, expected: {owner}"
@@ -45,7 +41,3 @@ class Pet_Tests(Base_Test):
     def delete_last_pet(self):
         r = ds.spec.api.tutorial5.delete(ds.spec.pet_id)
         assert r.status_code == 204
-
-
-
-

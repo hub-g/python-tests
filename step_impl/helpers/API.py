@@ -98,19 +98,3 @@ class API(object):
 
     def get_token(self):
         return {'Authorization':f'Bearer {self.auth}'}
-
-
-if __name__ == "__main__":
-    api = API("http://localhost:8080/api", auth="auth_token")
-    #r = api.tutorial5.get()
-    #r = api.tutorial5.get()
-    #print(api.resources['tutorial5/0'].id)
-    r = api.tutorial5(0).put(body={
-        'name': 'name',
-        'age': '4',
-        'owner': 'owner'
-    })
-
-    print(r.status_code)
-    print(r.json())
-
